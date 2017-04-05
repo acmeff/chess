@@ -19,12 +19,14 @@ module SlidingPiece
   def moves
     moves = []
     move_directions = move_dirs
-    move_directions
+    # move_directions
     DIRECTIONS.keys.each {|key| moves += find_path(key) if move_directions.include?(key)}
     # DIAGONALS.keys.each {|key| moves += find_path(key)} if move_directions[0] == 1
     # RANKS.keys.each {|key| moves += find_path(key)} if move_directions[0] == 1
-    moves
+    valid_moves(moves)
   end
+
+  
 
 
   def find_path(dir)

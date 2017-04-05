@@ -33,10 +33,12 @@ MOVES = {
 class Cursor
 
   attr_reader :cursor_pos, :board
+  attr_accessor :display
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
+    @display = nil
   end
 
   def get_input
@@ -78,10 +80,12 @@ class Cursor
   def handle_key(key)
     case key
     when :return, :space
-      @cursor_pos
+      @cursor_pos.dup
     when :left, :up, :down, :right
       move = MOVES[key]
       update_pos(move)
+      display.render
+      nil
     when :ctrl_c
       Process.exit(0)
     end

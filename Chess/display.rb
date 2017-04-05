@@ -1,10 +1,11 @@
 require "colorize"
 require_relative 'cursor'
 class Display
-  attr_reader :board
+  attr_reader :board, :cursor
   def initialize(board)
     @board = board
     @cursor = Cursor.new([0, 0], board)
+    cursor.display = self
   end
 
   def render
@@ -28,7 +29,7 @@ class Display
       @cursor.get_input
       render
     end
-    
+
 
   end
 
